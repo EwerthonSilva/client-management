@@ -1,8 +1,15 @@
 package br.com.incubadora.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Client {
+import javax.persistence.*;
+
+@Entity
+@Table(name = "client")
+public class Client implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	// Builder default
 	public Client() {
@@ -14,11 +21,22 @@ public class Client {
 		this.id = id;
 	}
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	@Column(name = "name")
 	private String name;
+
+	@Column(name = "surname")
 	private String surname;
+
+	@Column(name = "birthday")
 	private Date birthday;
+
+	@Column(name = "cpf")
 	private String cpf;
+
+	@Column(name = "rg")
 	private String rg;
 
 	public int getId() {
